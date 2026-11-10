@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elland Academy | Website Package Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--navy:#060810;--navy2:#0d1224;--gold:#FFB300;--blue:#2f7bff;--ink:#1c2233;--mute:#667088;--bg:#f5f7fc}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{font-family:Inter,sans-serif;color:var(--ink);background:#fff;line-height:1.65}
+h1,h2,h3,h4{font-family:Montserrat,sans-serif;line-height:1.2}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:auto;padding:0 20px}
+section{padding:90px 0}
+.alt{background:var(--bg)}
+.tag{display:inline-block;color:var(--blue);font:700 .78rem Montserrat;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.title{font-size:clamp(1.7rem,3.5vw,2.5rem);margin-bottom:12px;color:var(--navy)}
+.sub{color:var(--mute);max-width:640px;margin-bottom:46px}
+.grid{display:grid;gap:24px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 6px 28px rgba(6,8,16,.08);transition:.25s}
+.card:hover{transform:translateY(-5px)}
+.card i.ic{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue),#5ea0ff);color:#fff;display:grid;place-items:center;font-size:1.3rem;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:50px;border:0;cursor:pointer;font:700 .9rem Montserrat;transition:.2s}
+.btn.gold{background:var(--gold);color:var(--navy)}.btn.gold:hover{filter:brightness(1.1)}
+.btn.line{border:2px solid #fff;color:#fff;background:transparent}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.green{background:#25D366;color:#fff}
+.btn.mpesa{background:#43b02a;color:#fff}
+/* package bar */
+#bar{position:sticky;top:0;z-index:100;background:var(--navy);color:#fff;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+#bar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:10px 20px}
+#bar b{font:700 .8rem Montserrat;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase}
+.pk{display:flex;gap:6px;flex-wrap:wrap}
+.pk button{background:var(--navy2);color:#cfd6ee;border:1px solid #27304f;padding:9px 16px;border-radius:30px;cursor:pointer;font:600 .8rem Montserrat;transition:.2s}
+.pk button.on{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.pk button:hover:not(.on){border-color:var(--gold)}
+#badge{font:700 .75rem Montserrat;background:var(--blue);padding:6px 14px;border-radius:30px}
+/* nav */
+nav{background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.06);position:sticky;top:57px;z-index:90}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font:800 1.15rem Montserrat;color:var(--navy)}
+.logo i{background:var(--navy);color:var(--gold);width:40px;height:40px;border-radius:10px;display:grid;place-items:center}
+.links{display:flex;gap:20px;align-items:center;font:600 .85rem Montserrat;flex-wrap:wrap}
+.links a:hover{color:var(--blue)}
+#adminBtn{background:var(--navy);color:var(--gold);padding:9px 16px;border-radius:30px;border:0;cursor:pointer;font:700 .78rem Montserrat}
+@media(max-width:900px){.links a.hm{display:none}}
+/* tier visibility */
+.t2,.t3,.b1{display:none}
+body.p2 .t2,body.p3 .t2,body.p3 .t3{display:block}
+body.p2 .t2.f,body.p3 .t2.f,body.p3 .t3.f{display:flex}
+body.p2 .t2.i,body.p3 .t2.i,body.p3 .t3.i{display:inline-flex}
+body.p1 .b1{display:block}
+/* hero */
+.hero{background:linear-gradient(135deg,rgba(6,8,16,.93),rgba(13,30,80,.85)),repeating-linear-gradient(45deg,#0d1224 0 20px,#101a38 20px 40px);color:#fff;padding:130px 0 110px;text-align:center}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);margin:14px 0}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:620px;margin:0 auto 32px;color:#c3cbe6;font-size:1.1rem}
+.hero .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-top:70px}
+.stats div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px}
+.stats b{font:800 2.2rem Montserrat;color:var(--gold);display:block}
+/* upgrade banner */
+.upg{background:linear-gradient(90deg,var(--gold),#ffd25e);color:var(--navy);text-align:center;padding:16px 20px;font:700 .9rem Montserrat}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.gal div{height:200px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font:700 .95rem Montserrat;gap:10px;transition:.3s}
+.gal div:hover{transform:scale(1.04)}
+.gal i{font-size:2.2rem}
+/* news */
+.news .date{background:var(--gold);color:var(--navy);display:inline-block;padding:4px 12px;border-radius:20px;font:700 .72rem Montserrat;margin-bottom:12px}
+/* contact */
+.cf input,.cf select,.cf textarea,.fld input,.fld select{width:100%;padding:13px 15px;margin-bottom:14px;border:1px solid #d5dbec;border-radius:10px;font:inherit}
+.cf textarea{min-height:110px}
+iframe{width:100%;height:100%;min-height:320px;border:0;border-radius:16px}
+/* faq */
+.faq details{background:#fff;border-radius:12px;padding:18px 22px;margin-bottom:12px;box-shadow:0 3px 14px rgba(0,0,0,.06)}
+.faq summary{font:700 .95rem Montserrat;cursor:pointer}
+.faq p{margin-top:10px;color:var(--mute)}
+/* portals */
+.portal{background:var(--navy);color:#fff}
+.portal .title{color:#fff}.portal .sub{color:#aab3d1}
+.dash{background:var(--navy2);border:1px solid #232c4d;border-radius:18px;overflow:hidden}
+.dtabs{display:flex;background:#080c1c;overflow-x:auto}
+.dtabs button{flex:1;padding:15px;background:none;border:0;color:#9aa5ca;cursor:pointer;font:700 .82rem Montserrat;white-space:nowrap}
+.dtabs button.on{color:var(--gold);box-shadow:inset 0 -3px var(--gold)}
+.pane{display:none;padding:26px}.pane.on{display:block}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:11px 10px;text-align:left;border-bottom:1px solid #232c4d}
+th{color:var(--gold);font:700 .75rem Montserrat;text-transform:uppercase}
+.paid{color:#4ade80}.due{color:#fb923c}
+.note{background:#121a36;border-left:4px solid var(--gold);padding:14px 18px;border-radius:8px;margin-bottom:12px}
+.note small{color:#8e99c0}
+.logbox{background:#050711;border-radius:10px;padding:14px;font:.78rem/1.9 monospace;color:#7ee0a0;height:170px;overflow:auto}
+.logbox .w{color:#ffb86b}.logbox .r{color:#ff7b7b}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:16px}
+.kpi div{background:#121a36;border-radius:10px;padding:14px}
+.kpi b{font:800 1.4rem Montserrat;color:var(--gold);display:block}
+.bars{display:flex;align-items:flex-end;gap:8px;height:90px;margin-bottom:16px}
+.bars i{flex:1;background:linear-gradient(var(--blue),#1a3f8f);border-radius:5px 5px 0 0}
+/* admin drawer */
+#admin{position:fixed;top:0;right:-460px;width:min(440px,100%);height:100%;background:#fff;z-index:300;box-shadow:-10px 0 40px rgba(0,0,0,.3);transition:.35s;padding:26px;overflow-y:auto}
+#admin.open{right:0}
+#admin h3{color:var(--navy);margin-bottom:6px}
+.adm-sec{background:var(--bg);border-radius:12px;padding:16px;margin:16px 0}
+.adm-sec h4{font-size:.9rem;margin-bottom:10px;color:var(--navy)}
+.adm-sec input,.adm-sec select{width:100%;padding:10px;margin-bottom:8px;border:1px solid #d5dbec;border-radius:8px;font:inherit}
+.adm-sec .logbox{background:#0b1022}
+.x{float:right;background:none;border:0;font-size:1.4rem;cursor:pointer}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(6,8,16,.8);display:none;place-items:center;z-index:400;padding:20px}
+.modal.open{display:grid}
+.mbox{background:#fff;border-radius:20px;padding:34px;max-width:420px;width:100%;position:relative;text-align:center}
+.mbox h3{color:var(--navy);margin-bottom:6px}
+.mbox input{width:100%;padding:13px;margin:6px 0;border:1px solid #d5dbec;border-radius:10px;font:inherit;text-align:center}
+.phone{background:#f0fdf4;border:2px solid #43b02a;border-radius:20px;padding:20px;margin-top:14px;text-align:left;display:none}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--navy);color:#fff;padding:14px 26px;border-radius:40px;z-index:500;transition:.4s;border:2px solid var(--gold);font-weight:500;max-width:90%}
+.toast.show{transform:translateX(-50%) translateY(0)}
+footer{background:var(--navy);color:#9aa5ca;padding:60px 0 24px}
+footer h4{color:#fff;margin-bottom:12px}
+footer li{list-style:none;margin-bottom:6px}
+.copy{border-top:1px solid #1d2644;margin-top:36px;padding-top:20px;text-align:center;font-size:.82rem}
+.wa{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;font-size:1.7rem;z-index:200;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+</style>
+</head>
+<body class="p1">
+
+<!-- PACKAGE VIEW MODE BAR -->
+<div id="bar"><div class="wrap">
+  <b><i class="fa-solid fa-eye"></i> Package View Mode</b>
+  <div class="pk">
+    <button data-p="1" class="on">Basic Plan Preview</button>
+    <button data-p="2">Standard Plan Preview</button>
+    <button data-p="3">Premium Plan Preview</button>
+  </div>
+  <span id="badge">Basic · 6 Pages</span>
+</div></div>
+
+<nav><div class="wrap">
+  <a href="#home" class="logo"><i class="fa-solid fa-graduation-cap"></i>Elland Academy</a>
+  <div class="links">
+    <a href="#about" class="hm">About</a><a href="#academics" class="hm">Academics</a><a href="#gallery" class="hm">Gallery</a><a href="#news" class="hm">News</a><a href="#contact">Contact</a>
+    <a href="#admissions" class="t2 i hm">Admissions</a>
+    <a href="#student" class="t2 i hm">Student Portal</a>
+    <a href="#staff" class="t3 i hm">Staff Portal</a>
+    <button class="btn mpesa t3 i" style="padding:9px 16px;font-size:.75rem" onclick="openM('mpesa')"><i class="fa-solid fa-mobile-screen"></i> Pay Fees</button>
+    <button id="adminBtn"><i class="fa-solid fa-lock"></i> Admin Access</button>
+  </div>
+</div></nav>
+
+<div class="upg b1"><i class="fa-solid fa-circle-up"></i> Upgrade to Standard/Premium for Student/Staff Portals &amp; Online Payments</div>
+
+<!-- HOME -->
+<header class="hero" id="home"><div class="wrap">
+  <span class="tag" style="color:var(--gold)">Kericho Town · Kenya</span>
+  <h1>Nurturing <span>Excellence</span>,<br>Building Tomorrow's Leaders</h1>
+  <p>Elland Academy offers a balanced CBC education combining academic rigor, character formation, and modern learning in the heart of Kericho.</p>
+  <div class="btns"><a href="#about" class="btn gold">Discover Our School <i class="fa-solid fa-arrow-right"></i></a><a href="#contact" class="btn line">Book a Campus Visit</a></div>
+  <div class="stats"><div><b data-n="1200">0</b>Students</div><div><b data-n="85">0</b>Qualified Teachers</div><div><b data-n="98">0</b>% KCPE/KJSEA Pass Rate</div><div><b data-n="15">0</b>Years of Excellence</div></div>
+</div></header>
+
+<!-- ABOUT -->
+<section id="about"><div class="wrap">
+  <span class="tag">About Us</span>
+  <h2 class="title">A Tradition of Learning in the Tea Highlands</h2>
+  <p class="sub">Founded in 2010, Elland Academy has grown into one of Kericho's most trusted institutions, where every learner is known, challenged, and supported.</p>
+  <div class="grid g3">
+    <div class="card"><i class="ic fa-solid fa-bullseye"></i><h3>Our Mission</h3><p style="margin-top:8px;color:var(--mute)">To provide holistic, learner-centred education that unlocks every child's potential and prepares them for a changing world.</p></div>
+    <div class="card"><i class="ic fa-solid fa-eye"></i><h3>Our Vision</h3><p style="margin-top:8px;color:var(--mute)">To be the leading centre of academic and moral excellence in the Rift Valley and beyond.</p></div>
+    <div class="card"><i class="ic fa-solid fa-heart"></i><h3>Core Values</h3><p style="margin-top:8px;color:var(--mute)">Integrity, discipline, respect, teamwork, innovation, and service to community.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:50px;align-items:center">
+    <div><h3 style="font-size:1.5rem;margin-bottom:12px">Message from the Principal</h3><p style="color:var(--mute)">"At Elland Academy we believe every child is born with a gift. Our work is to discover it, polish it, and send it into the world with confidence and character. We invite you to visit, see our classrooms, and meet the teachers who will walk with your child."</p><p style="margin-top:14px"><b>Mrs. Grace Chebet</b><br><small style="color:var(--mute)">Principal, Elland Academy</small></p></div>
+    <div class="card" style="background:var(--navy);color:#fff"><h3 style="color:var(--gold);margin-bottom:14px">Why Parents Choose Us</h3><p>✔ Small class sizes &amp; personal attention<br>✔ Strong CBC &amp; digital literacy programme<br>✔ Safe, secure, green campus<br>✔ Reliable school transport across Kericho<br>✔ Active guidance &amp; counselling</p></div>
+  </div>
+</div></section>
+
+<!-- ACADEMICS -->
+<section id="academics" class="alt"><div class="wrap">
+  <span class="tag">Academics</span>
+  <h2 class="title">Learning That Goes Beyond the Classroom</h2>
+  <p class="sub">A full CBC curriculum from Pre-Primary to Junior Secondary with enrichment in sports, arts, and technology.</p>
+  <div class="grid g4">
+    <div class="card"><i class="ic fa-solid fa-child-reaching"></i><h3>Pre-Primary</h3><p style="color:var(--mute);margin-top:8px">PP1–PP2. Play-based learning, early literacy, numeracy and creative expression.</p></div>
+    <div class="card"><i class="ic fa-solid fa-book-open"></i><h3>Lower Primary</h3><p style="color:var(--mute);margin-top:8px">Grades 1–3. Strong foundation in English, Kiswahili, Mathematics and Environmental Activities.</p></div>
+    <div class="card"><i class="ic fa-solid fa-flask"></i><h3>Upper Primary</h3><p style="color:var(--mute);margin-top:8px">Grades 4–6. Integrated science, social studies, agriculture and creative arts.</p></div>
+    <div class="card"><i class="ic fa-solid fa-laptop-code"></i><h3>Junior Secondary</h3><p style="color:var(--mute);margin-top:8px">Grades 7–9. Pre-technical studies, ICT, languages and pathway guidance.</p></div>
+  </div>
+  <div class="grid g3" style="margin-top:36px">
+    <div class="card"><h4>⚽ Co-Curricular</h4><p style="color:var(--mute);margin-top:8px">Football, athletics, netball, volleyball, chess, drama, music &amp; Scouts.</p></div>
+    <div class="card"><h4>💻 Computer Lab</h4><p style="color:var(--mute);margin-top:8px">Modern lab with coding, typing and digital citizenship classes.</p></div>
+    <div class="card"><h4>📖 Library &amp; Clubs</h4><p style="color:var(--mute);margin-top:8px">Reading programme, science club, debate club and environmental club.</p></div>
+  </div>
+</div></section>
+
+<!-- GALLERY -->
+<section id="gallery"><div class="wrap">
+  <span class="tag">Campus Gallery</span>
+  <h2 class="title">Life at Elland Academy</h2>
+  <p class="sub">A glimpse of our classrooms, fields and moments that make our school special. (Demo placeholders, replaced with your real photos.)</p>
+  <div class="gal" id="galGrid"></div>
+</div></section>
+
+<!-- NEWS -->
+<section id="news" class="alt news"><div class="wrap">
+  <span class="tag">News &amp; Events</span>
+  <h2 class="title">Latest From Our Campus</h2>
+  <p class="sub">Stay updated with announcements, achievements and upcoming school events.</p>
+  <div class="grid g3" id="newsGrid"></div>
+</div></section>
+
+<!-- TESTIMONIALS -->
+<section><div class="wrap">
+  <span class="tag">Testimonials</span>
+  <h2 class="title">What Parents Say</h2><p class="sub">Trusted by hundreds of families across Kericho County.</p>
+  <div class="grid g3">
+    <div class="card"><p style="color:var(--mute)">"My daughter's confidence has grown tremendously. The teachers truly care."</p><p style="margin-top:14px"><b>⭐⭐⭐⭐⭐ Mr. Kiprono</b></p></div>
+    <div class="card"><p style="color:var(--mute)">"Excellent communication and a safe environment. Highly recommended."</p><p style="margin-top:14px"><b>⭐⭐⭐⭐⭐ Mrs. Wanjiku</b></p></div>
+    <div class="card"><p style="color:var(--mute)">"From CBC to computer skills, my son is thriving at Elland."</p><p style="margin-top:14px"><b>⭐⭐⭐⭐⭐ Mr. Otieno</b></p></div>
+  </div>
+</div></section>
+
+<!-- ADMISSIONS (STANDARD+) -->
+<section id="admissions" class="alt t2"><div class="wrap">
+  <span class="tag">Standard Feature</span>
+  <h2 class="title">Online Admissions Inquiry</h2>
+  <p class="sub">Parents apply from home. Inquiries land straight in the school admin panel.</p>
+  <div class="grid g2" style="align-items:start">
+    <form class="card fld" onsubmit="event.preventDefault();toast('✅ Inquiry received! Admissions will contact you within 24 hours.');this.reset()">
+      <input required placeholder="Parent / Guardian name"><input required type="tel" placeholder="Phone number">
+      <input placeholder="Child's full name"><select><option>Grade applying for</option><option>PP1–PP2</option><option>Grade 1–3</option><option>Grade 4–6</option><option>Grade 7–9</option></select>
+      <button class="btn blue" style="width:100%;justify-content:center">Submit Inquiry</button>
+    </form>
+    <div class="card"><h3 style="margin-bottom:12px">Admission Process</h3><p style="color:var(--mute)"><b>1.</b> Submit inquiry online<br><b>2.</b> Campus visit &amp; interview<br><b>3.</b> Placement assessment<br><b>4.</b> Receive admission letter<br><b>5.</b> Pay fees &amp; report</p></div>
+  </div>
+</div></section>
+
+<!-- STUDENT PORTAL (STANDARD+) -->
+<section id="student" class="portal t2"><div class="wrap">
+  <span class="tag" style="color:var(--gold)">Standard Feature</span>
+  <h2 class="title">Student Portal Login</h2>
+  <p class="sub">Learners and parents see timetables, fee statements and the school noticeboard anytime.</p>
+  <div class="dash">
+    <div class="dtabs"><button class="on" data-t="tt">📅 Timetable</button><button data-t="fee">💳 Fee Statement</button><button data-t="nb">📢 Noticeboard</button></div>
+    <div class="pane on" id="tt"><p style="margin-bottom:12px;color:#aab3d1">Welcome, <b style="color:#fff">Brian Kiplagat</b> · Grade 7 East</p>
+      <div style="overflow-x:auto"><table><tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+      <tr><td>8:00</td><td>Maths</td><td>English</td><td>Science</td><td>Kiswahili</td><td>Maths</td></tr>
+      <tr><td>9:30</td><td>English</td><td>Maths</td><td>ICT</td><td>Social St.</td><td>English</td></tr>
+      <tr><td>11:30</td><td>Science</td><td>PTS</td><td>Maths</td><td>Agric.</td><td>Creative Arts</td></tr>
+      <tr><td>2:00</td><td>Games</td><td>Library</td><td>Clubs</td><td>Music</td><td>Assembly</td></tr></table></div></div>
+    <div class="pane" id="fee"><div style="overflow-x:auto"><table><tr><th>Item</th><th>Billed</th><th>Paid</th><th>Status</th></tr>
+      <tr><td>Term 3 Tuition</td><td>KES 18,000</td><td>KES 18,000</td><td class="paid">Paid</td></tr>
+      <tr><td>Transport</td><td>KES 5,500</td><td>KES 3,000</td><td class="due">Balance 2,500</td></tr>
+      <tr><td>Lunch Programme</td><td>KES 4,500</td><td>KES 4,500</td><td class="paid">Paid</td></tr></table></div>
+      <p style="margin-top:14px">Outstanding balance: <b style="color:var(--gold)">KES 2,500</b></p>
+      <button class="btn mpesa t3 i" style="margin-top:12px" onclick="openM('mpesa')"><i class="fa-solid fa-mobile-screen"></i> Pay via M-Pesa</button></div>
+    <div class="pane" id="nb"><div class="note">Term 3 closing date: 28th November<br><small>Posted 2 days ago</small></div><div class="note">Grade 7 Science Fair registration open<br><small>Posted 4 days ago</small></div><div class="note">Parents' meeting this Saturday, 9am, main hall<br><small>Posted 1 week ago</small></div></div>
+  </div>
+</div></section>
+
+<!-- STAFF PORTAL (PREMIUM) -->
+<section id="staff" class="t3"><div class="wrap">
+  <span class="tag">Premium Feature</span>
+  <h2 class="title">Staff / Teacher Portal</h2>
+  <p class="sub">Teachers upload assignment notes and enter class results from any device.</p>
+  <div class="grid g2" style="align-items:start">
+    <form class="card fld" onsubmit="event.preventDefault();toast('📤 Notes uploaded and shared with Grade 8!')">
+      <h3 style="margin-bottom:14px"><i class="fa-solid fa-upload" style="color:var(--blue)"></i> Upload Assignment Notes</h3>
+      <select><option>Grade 8 · English</option><option>Grade 7 · Literature</option><option>Grade 6 · Science</option></select>
+      <input placeholder="Title e.g. Poetry Analysis Worksheet"><input type="file">
+      <button class="btn blue" style="width:100%;justify-content:center">Upload &amp; Share</button>
+    </form>
+    <div class="card"><h3 style="margin-bottom:14px"><i class="fa-solid fa-pen-to-square" style="color:var(--blue)"></i> Enter Class Results</h3>
+      <table style="color:var(--ink)" id="res"><tr><th style="color:var(--navy)">Learner</th><th style="color:var(--navy)">Score /100</th><th style="color:var(--navy)">Grade</th></tr></table>
+      <button class="btn gold" style="margin-top:14px" onclick="toast('✅ Results saved & parents notified')">Save Results</button></div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact" class="alt"><div class="wrap">
+  <span class="tag">Contact</span>
+  <h2 class="title">Visit or Contact Us</h2>
+  <p class="sub">Elland Academy, Kericho Town · Mon–Fri 7:30am–5:00pm</p>
+  <div class="grid g2" style="align-items:stretch">
+    <form class="card cf" onsubmit="event.preventDefault();toast('✅ Message sent! We will reply shortly.');this.reset()">
+      <input required placeholder="Your name"><input required type="email" placeholder="Email address">
+      <select><option>General Inquiry</option><option>Admissions</option><option>Fees</option><option>Campus Visit</option></select>
+      <textarea required placeholder="Your message"></textarea>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn blue">Send Message</button>
+      <a class="btn green" target="_blank" href="https://wa.me/254700000000?text=Hello%20Elland%20Academy"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a></div>
+    </form>
+    <div><iframe loading="lazy" title="Map" src="https://www.google.com/maps?q=Kericho+Town+Kenya&output=embed"></iframe></div>
+  </div>
+</div></section>
+
+<section class="faq"><div class="wrap" style="max-width:800px">
+  <span class="tag">FAQ</span><h2 class="title">Frequently Asked Questions</h2><br>
+  <details><summary>Which curriculum do you follow?</summary><p>We follow the Kenyan Competency-Based Curriculum (CBC) with enrichment programmes.</p></details>
+  <details><summary>Do you offer school transport?</summary><p>Yes, safe buses cover major routes around Kericho town and environs.</p></details>
+  <details><summary>Can I visit before applying?</summary><p>Absolutely, book a campus tour via the contact form or WhatsApp.</p></details>
+</div></section>
+
+<!-- ADMIN DRAWER -->
+<aside id="admin">
+  <button class="x" onclick="admin.classList.remove('open')">&times;</button>
+  <h3><i class="fa-solid fa-gauge"></i> Admin Panel</h3><small id="admPlan" style="color:var(--mute)"></small>
+  <div class="adm-sec t2"><h4>👤 Login as role</h4><select id="role" onchange="toast('Switched to '+this.value+' role')"><option>Admin (full access)</option><option>Editor (news &amp; gallery only)</option></select></div>
+  <div class="adm-sec"><h4>📰 Post News Update</h4><input id="nt" placeholder="Headline"><button class="btn blue" style="padding:10px 18px" onclick="addNews()">Publish</button></div>
+  <div class="adm-sec"><h4>🖼️ Gallery Manager</h4><button class="btn gold" style="padding:10px 18px" onclick="addPhoto()"><i class="fa-solid fa-plus"></i> Add Photo Slot</button></div>
+  <div class="adm-sec t3"><h4>📊 Google Analytics &amp; Security Log</h4>
+    <div class="kpi"><div><b id="k1">1,284</b><small>Visitors today</small></div><div><b id="k2">4:12</b><small>Avg. session</small></div><div><b>0</b><small>Threats</small></div></div>
+    <div class="bars" id="bars"></div>
+    <div class="logbox" id="log"></div></div>
+</aside>
+
+<!-- MPESA MODAL -->
+<div class="modal" id="mpesa"><div class="mbox">
+  <button class="x" onclick="closeM('mpesa')">&times;</button>
+  <div style="font-size:2.6rem;color:#43b02a"><i class="fa-solid fa-mobile-screen-button"></i></div>
+  <h3>Pay School Fees via M-Pesa</h3><p style="color:var(--mute);font-size:.85rem;margin-bottom:10px">Safaricom STK Push · Paybill 123456</p>
+  <input id="adm" placeholder="Admission number e.g. EA-2041"><input id="ph" type="tel" placeholder="M-Pesa number 07XX XXX XXX"><input id="amt" type="number" value="2500">
+  <button class="btn mpesa" style="width:100%;justify-content:center;margin-top:8px" onclick="stk()">Send STK Push</button>
+  <div class="phone" id="phone"><b>M-PESA</b><p id="pmsg" style="margin:6px 0"></p><small style="color:var(--mute)">Enter your M-Pesa PIN to confirm</small><br><button class="btn mpesa" style="margin-top:10px;padding:9px 20px" onclick="done()">Enter PIN &amp; Confirm</button></div>
+</div></div>
+
+<a class="wa" target="_blank" href="https://wa.me/254700000000"><i class="fa-brands fa-whatsapp"></i></a>
+<div class="toast" id="toast"></div>
+
+<footer><div class="wrap">
+  <div class="grid g4">
+    <div><h4>Elland Academy</h4><p>Excellence in education, Kericho Town, Kenya.</p></div>
+    <div><h4>Quick Links</h4><ul><li><a href="#about">About</a></li><li><a href="#academics">Academics</a></li><li><a href="#news">News</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li><i class="fa-solid fa-phone"></i> +254 700 000 000</li><li><i class="fa-solid fa-envelope"></i> info@ellandacademy.ac.ke</li><li><i class="fa-solid fa-location-dot"></i> Kericho Town</li></ul></div>
+    <div><h4>Follow Us</h4><p style="font-size:1.4rem;display:flex;gap:14px"><i class="fa-brands fa-facebook"></i><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-x-twitter"></i></p></div>
+  </div>
+  <div class="copy">© 2026 Elland Academy · Demo website by Eddyforge, "Build Your Digital Legacy"</div>
+</div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)};
+const openM=id=>$('#'+id).classList.add('open'),closeM=id=>{$('#'+id).classList.remove('open');$('#phone').style.display='none'};
+const plans={1:['Basic · 6 Pages','Basic Plan: news & gallery CMS'],2:['Standard · 10 Pages','Standard Plan: multi-user roles'],3:['Premium · 15 Pages','Premium Plan: full admin + analytics']};
+$$('.pk button').forEach(b=>b.onclick=()=>{
+  const p=b.dataset.p;$$('.pk button').forEach(x=>x.classList.toggle('on',x===b));
+  document.body.className='p'+p;$('#badge').textContent=plans[p][0];$('#admPlan').textContent=plans[p][1];
+  toast('Now previewing: '+plans[p][0]);
+});
+$('#admPlan').textContent=plans[1][1];
+$('#adminBtn').onclick=()=>$('#admin').classList.toggle('open');
+/* counters */
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){const el=x.target,n=+el.dataset.n;let c=0;const s=Math.ceil(n/50);const i=setInterval(()=>{c=Math.min(n,c+s);el.textContent=c.toLocaleString();if(c>=n)clearInterval(i)},30);io.unobserve(el)}}));
+$$('[data-n]').forEach(e=>io.observe(e));
+/* gallery */
+const gl=[['Science Lab','fa-flask','#2f7bff,#1a3f8f'],['Football Field','fa-futbol','#16a34a,#0b5d2a'],['Library','fa-book','#9333ea,#4c1d95'],['Classrooms','fa-chalkboard-user','#FFB300,#b36b00'],['Computer Lab','fa-computer','#0ea5e9,#075985'],['Music & Drama','fa-music','#e11d48,#7f1030'],['Assembly','fa-people-group','#f97316,#9a3412'],['Graduation','fa-user-graduate','#14b8a6,#0f5e56']];
+const addG=g=>{const d=document.createElement('div');d.style.background=`linear-gradient(135deg,${g[2]})`;d.innerHTML=`<i class="fa-solid ${g[1]}"></i>${g[0]}`;$('#galGrid').appendChild(d)};
+gl.forEach(addG);
+const addPhoto=()=>{addG(['New Photo '+($$('#galGrid div').length+1),'fa-camera','#475569,#1e293b']);toast('🖼️ Photo slot added to gallery')};
+/* news */
+const nw=[['12 Nov 2026','Grade 9 Science Fair','Learners showcase innovative projects to parents and judges.'],['20 Nov 2026','Inter-School Athletics','Our athletes head to the Kericho County championships.'],['28 Nov 2026','Term 3 Closing Day','Reports issued and prize-giving ceremony at 10am.']];
+const addN=n=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<span class="date">${n[0]}</span><h3>${n[1]}</h3><p style="color:var(--mute);margin-top:8px">${n[2]}</p>`;$('#newsGrid').prepend(d)};
+nw.reverse().forEach(addN);
+const addNews=()=>{const v=$('#nt').value.trim();if(!v)return toast('Type a headline first');addN(['Today',v,'Fresh update posted from the admin panel.']);$('#nt').value='';toast('📰 News published live on the site');location.hash='news'};
+/* tabs */
+$$('.dtabs button').forEach(b=>b.onclick=()=>{$$('.dtabs button').forEach(x=>x.classList.toggle('on',x===b));$$('.pane').forEach(p=>p.classList.toggle('on',p.id===b.dataset.t))});
+/* results */
+['Amina Jeruto','Kevin Mutai','Faith Wanjiru','Dennis Kirui'].forEach(n=>{const r=$('#res').insertRow();r.innerHTML=`<td>${n}</td><td><input type="number" min="0" max="100" value="${60+Math.floor(Math.random()*35)}" style="width:70px;padding:6px;border:1px solid #d5dbec;border-radius:6px"></td><td>—</td>`;
+r.querySelector('input').oninput=e=>{const v=+e.target.value;r.cells[2].textContent=v>=80?'EE':v>=60?'ME':v>=40?'AE':'BE'};r.querySelector('input').dispatchEvent(new Event('input'))});
+/* mpesa */
+const stk=()=>{const p=$('#ph').value.trim();if(p.length<9)return toast('Enter a valid M-Pesa number');$('#pmsg').textContent=`Pay KES ${(+$('#amt').value).toLocaleString()} to ELLAND ACADEMY, Acc: ${$('#adm').value||'EA-2041'}?`;$('#phone').style.display='block';toast('📲 STK Push sent to '+p)};
+const done=()=>{closeM('mpesa');toast('✅ Payment received! SMS receipt sent. Ref: QJK7'+Math.floor(Math.random()*9e5+1e5))};
+/* analytics log */
+$('#bars').innerHTML=[40,65,50,80,70,95,60].map(h=>`<i style="height:${h}%"></i>`).join('');
+const ev=[['Page view: /academics from Kericho, KE',''],['Admin login success (2FA verified)',''],['Blocked 3 bot requests (firewall)','w'],['SSL certificate valid · 87 days left',''],['Page view: /news from Nairobi, KE',''],['Failed login attempt blocked from unknown IP','r'],['Daily backup completed',''],['Form submission: admissions inquiry','']];
+const lg=$('#log');
+const push=()=>{const e=ev[Math.floor(Math.random()*ev.length)];const t=new Date().toLocaleTimeString();lg.innerHTML+=`<div class="${e[1]}">[${t}] ${e[0]}</div>`;lg.scrollTop=lg.scrollHeight;$('#k1').textContent=(1284+Math.floor(Math.random()*40)).toLocaleString()};
+for(let i=0;i<4;i++)push();setInterval(push,2800);
+</script>
+</body>
+</html>
